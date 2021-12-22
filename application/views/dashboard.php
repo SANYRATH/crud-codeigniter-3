@@ -24,7 +24,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Quản lý nhân viên</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('Welcome/login') ?>">Login</a>
+                        <a class="nav-link" href="<?= base_url('Employee/create') ?>">Thêm nhân viên mới</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

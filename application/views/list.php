@@ -9,23 +9,23 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Login</title>
+    <title>CUBE</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">CRUD</a>
+            <a class="navbar-brand" href="#">CUBE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">login</a>
+                        <a class="nav-link active" aria-current="page" href="#">Quản lý nhân viên</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('Welcome/register') ?>">Register</a>
+                        <a class="nav-link" href="<?= base_url('Employee/create') ?>">Thêm nhân viên mới</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -41,21 +41,37 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form method="post" autocomplete="off" action="<?= base_url('Welcome/loginNow') ?>">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" name="email" class="form-control" id="email" aria-describedby="email" placeholder="User Email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" placeholder="User password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login </button>
-                </form>
+                <table class="table table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+
+                    <?php if(!empty($employees)) { foreach($employees as $employee) {?>
+                    <tr>
+                        <td><?php echo $employee['user_id']?></td>
+                        <td><?php echo $employee['name']?></td>
+                        <td><?php echo $employee['email']?></td>
+                        <td>
+                            <a href="<?php echo base_url().'employee/edit/'.$employee['user_id']?>" class="btn btn-primary"> Edit</a>
+                        </td>
+                        <td>
+                            <a href="<?php echo base_url().'employee/delete/'.$employee['user_id']?>" class="btn btn-danger"> delete</a>
+                        </td>
+                    </tr>
+                    <?php } } else {?>
+                        <tr>
+                            <td colspan="5"> không tìm thấy</td>
+                        </tr>
+                    <?php } ?>
+                </table>
             </div>
             <?php
-            if ($this->session->flashdata('error')) { ?>
-                <p class="text-success"> <?= $this->session->flashdata('error') ?> </p>
+            if ($this->session->flashdata('success')) { ?>
+                <p class="text-success"> <?= $this->session->flashdata('success') ?> </p>
             <?php } ?>
 
         </div>

@@ -24,6 +24,12 @@ class Welcome extends CI_Controller
 		$this->load->view('login');
 	}
 
+	public function list()
+	{
+		$this->load->view('list');
+	}
+	
+
 	function register()
 	{
 		$this->load->view('register');
@@ -80,10 +86,10 @@ class Welcome extends CI_Controller
 						'email' => $email,
 					);
 					//$this->session->set_userdata('UserloginSession', $session_data);
-					redirect(base_url('welcome/dashboard'));
+					redirect(base_url().'employee/index');
 				} else {
 					 //$this->session->set_flashdata('error', 'email hoặc pass đã sai');
-					redirect(base_url('login'));
+					redirect(base_url('welcome/login'));
 				}
 			} else {
 			

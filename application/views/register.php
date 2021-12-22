@@ -57,7 +57,10 @@
                     <button type="submit" class="btn btn-primary">Register Now</button>
                 </form>
             </div>
-            
+            <?php
+            if ($this->session->flashdata('success')) { ?>
+                <p class="text-success"> <?= $this->session->flashdata('success') ?> </p>
+            <?php } ?>
 
         </div>
     </div>
