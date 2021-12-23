@@ -7,7 +7,7 @@ class Employee extends CI_controller{
         $employee = $this->Employee_model->all();
 
         $data['employees'] =  $employee;
-        $this->load->view('list', $data);
+        $this->load->view('employee/list', $data);
     }
 
     function create() {
@@ -29,7 +29,7 @@ class Employee extends CI_controller{
         }
         else 
         {
-            $this->load->view('create');
+            $this->load->view('employee/create');
         }
     }
     
@@ -44,7 +44,7 @@ class Employee extends CI_controller{
         $this->form_validation->set_rules('email','Email', 'required|valid_email');
 
         if($this->form_validation->run()==false) {
-            $this->load->view('edit',$data);
+            $this->load->view('employee/edit',$data);
         }
         else{
             //update
