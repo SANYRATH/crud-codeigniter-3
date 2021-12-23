@@ -29,6 +29,10 @@ class Welcome extends CI_Controller
 		$this->load->view('employee/list');
 	}
 	
+	public function indexRegister()
+	{
+		$this->load->view('auth/register');
+	}
 
 	function register()
 	{
@@ -51,7 +55,7 @@ class Welcome extends CI_Controller
 				);
 				$this->load->model('user_model');
 				$this->user_model->insertuser($data);
-				//$this->session->set_flashdata('success','đăng kí thành công');
+				$this->session->set_flashdata('success','đăng kí thành công');
 				redirect(base_url('welcome/login'));
 			}
 		}
